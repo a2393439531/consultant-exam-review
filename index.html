@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2025-2026咨询工程师真题复习</title>
+<style>
+:root{--p:#1a5fb4;--p2:#eaf2fc;--ok:#2e7d32;--okbg:#e8f5e9;--bad:#c62828;--badbg:#fdecea;--warn:#e65100;--line:#e3e8ef;--bg:#f4f6f9;--card:#fff;--txt:#24292f}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;background:var(--bg);color:var(--txt);font-size:15px;line-height:1.75}
+header{background:linear-gradient(135deg,#123f7c,#1a5fb4);color:#fff;padding:18px 16px 0;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+header h1{font-size:20px;margin-bottom:4px}
+header .sub{font-size:12.5px;opacity:.85;margin-bottom:12px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tab{padding:9px 16px;border-radius:8px 8px 0 0;cursor:pointer;background:rgba(255,255,255,.15);font-size:14px;border:none;color:#fff}
+.tab.on{background:var(--bg);color:var(--p);font-weight:700}
+main{max-width:980px;margin:0 auto;padding:16px 12px 60px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px;position:sticky;top:0;z-index:9;background:var(--bg);padding:8px 0;border-bottom:1px solid var(--line)}
+.chip{padding:5px 12px;border-radius:16px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:13px}
+.chip.on{background:var(--p);color:#fff;border-color:var(--p)}
+input[type=search]{flex:1;min-width:160px;padding:7px 12px;border:1px solid var(--line);border-radius:8px;font-size:14px}
+.stat{font-size:13px;color:#555;background:#fff;border:1px solid var(--line);padding:5px 10px;border-radius:8px}
+.progress{height:6px;background:#e5e9f0;border-radius:3px;margin-bottom:14px;overflow:hidden}
+.progress>div{height:100%;background:linear-gradient(90deg,#2e7d32,#66bb6a);width:0;transition:width .3s}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.qhead{display:flex;gap:8px;align-items:flex-start}
+.qnum{flex:none;background:var(--p2);color:var(--p);font-weight:700;border-radius:6px;padding:1px 9px;font-size:13.5px;margin-top:2px}
+.qtype{flex:none;font-size:11px;border:1px solid var(--warn);color:var(--warn);border-radius:4px;padding:0 5px;margin:5px 0 0 2px}
+.qstem{flex:1}
+.fig{text-align:center;margin:10px 0 4px}
+.fig svg{max-width:100%;height:auto;background:#fff}
+.figcap{font-size:12px;color:#78909c;text-align:center;margin-top:2px}
+.opts{margin:10px 0 0 6px;display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;gap:8px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;cursor:pointer;background:#fafbfc;align-items:flex-start}
+.opt:hover{border-color:var(--p)}
+.opt .lab{font-weight:700;color:var(--p);flex:none}
+.opt.sel{background:var(--p2);border-color:var(--p)}
+.opt.right{background:var(--okbg);border-color:var(--ok)}
+.opt.right .lab{color:var(--ok)}
+.opt.wrong{background:var(--badbg);border-color:var(--bad)}
+.opt.wrong .lab{color:var(--bad)}
+.btnrow{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.btn{padding:6px 14px;border-radius:8px;border:1px solid var(--p);background:var(--p);color:#fff;cursor:pointer;font-size:13.5px}
+.btn.ghost{background:#fff;color:var(--p)}
+.ansbox{margin-top:12px;background:var(--okbg);border:1px solid #bfe3c2;border-radius:8px;padding:10px 14px}
+.ansbox .tag{font-weight:700;color:var(--ok)}
+.expbox{margin-top:8px;background:#f7f9fc;border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:14px}
+.expbox b{color:var(--p)}
+.sec-title{margin:22px 0 10px;font-size:16.5px;font-weight:700;color:var(--p);border-left:4px solid var(--p);padding-left:10px}
+.case .bg{background:#f7f9fc;border:1px dashed #c9d4e3;border-radius:8px;padding:12px 14px;font-size:14.5px}
+.case table{border-collapse:collapse;margin:8px 0;width:100%;font-size:13.5px;background:#fff}
+.case th,.case td{border:1px solid #c9d4e3;padding:4px 8px;text-align:center}
+.case th{background:#eef3fa}
+.qa{margin-top:12px;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.qa .qq{padding:9px 13px;background:#fbfcfe;cursor:pointer;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.qa .qq:hover{background:var(--p2)}
+.qa .aa{display:none;padding:11px 14px;background:#fff;border-top:1px solid var(--line)}
+.qa.open .aa{display:block}
+.qa.open .qq .tri{transform:rotate(90deg)}
+.tri{transition:transform .2s;color:var(--p)}
+.pts{margin-top:12px;background:#fffaf0;border:1px solid #f0dfb2;border-radius:8px;padding:9px 13px;font-size:13.5px;color:#7a5c00}
+.pts b{color:var(--warn)}
+.empty{text-align:center;color:#888;padding:40px 0}
+footer{text-align:center;color:#999;font-size:12px;padding:20px 0 30px}
+@media print{.bar,.btnrow,.btn,.tri{display:none!important}.qa .aa{display:block!important;border-top:1px solid #999}.card{break-inside:avoid;border:1px solid #999}header{background:#123f7c!important;-webkit-print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<header>
+  <h1>咨询工程师（投资）真题复习</h1>
+  <div class="sub">2025《项目决策分析与评价》95题 · 2025《现代咨询方法与实务》6题 · 2026《现代咨询方法与实务》6题　|　点击选项自测，答案与解析随时展开；进度自动保存</div>
+  <div class="tabs">
+    <button class="tab on" data-t="jc">项目决策分析与评价（2025·95题）</button>
+    <button class="tab" data-t="sw25">现代咨询方法与实务（2025·6题）</button>
+    <button class="tab" data-t="sw26">现代咨询方法与实务（2026·6题）</button>
+  </div>
+</header>
+<main>
+  <div id="pane-jc"></div>
+  <div id="pane-sw25" style="display:none"></div>
+  <div id="pane-sw26" style="display:none"></div>
+</main>
+<footer>由三份PDF真题整理生成 · 决策评价卷答案为整理补充，实务2025卷含官方参考答案，实务2026卷解答为编写 · 建议用浏览器打开并配合打印功能导出PDF</footer>
+<script src="data_jc_a.js"></script>
+<script src="data_jc_b.js"></script>
+<script src="data_sw.js"></script>
+<script>
+(function(){
+const LS="zxgcs2025_v1";
+let store={};
+try{store=JSON.parse(localStorage.getItem(LS)||"{}")}catch(e){store={}}
+function save(){try{localStorage.setItem(LS,JSON.stringify(store))}catch(e){}}
+const JC=window.JC25.q.concat(window.JC25B.q);
+const cur={tab:"jc",filter:"all",kw:""};
+
+/* ---------- 选择题 ---------- */
+function optDiv(q,i){
+  const lab=String.fromCharCode(65+i);
+  const st=store["q"+q.n]||{};
+  return `<div class="opt" data-q="${q.n}" data-i="${i}"><span class="lab">${lab}.</span><span>${q.opts[i]}</span></div>`;
+}
+function qCard(q){
+  const st=store["q"+q.n]||{};
+  const answered=!!st.s;
+  let opts=q.opts.map((o,i)=>optDiv(q,i)).join("");
+  let ansHtml="";
+  if(st.show){
+    const ansArr=q.ans.split("");
+    ansHtml=`<div class="ansbox"><span class="tag">参考答案：${q.ans}</span>${answered?`（你的选择：${st.s}）`:""}</div>
+    <div class="expbox"><b>解析：</b>${q.exp}</div>`;
+  }
+  return `<div class="card" id="qc${q.n}" data-n="${q.n}">
+    <div class="qhead"><span class="qnum">${q.n}</span><span class="qtype">${q.t==="m"?"多选":"单选"}</span><div class="qstem">${q.stem}</div></div>
+    <div class="opts">${opts}</div>
+    <div class="btnrow">
+      ${q.t==="m"&&!st.show?`<button class="btn" data-act="submit" data-n="${q.n}">提交答案</button>`:""}
+      <button class="btn ${st.show?"ghost":""}" data-act="show" data-n="${q.n}">${st.show?"收起答案与解析":"查看答案与解析"}</button>
+      ${answered||st.show?`<button class="btn ghost" data-act="clear" data-n="${q.n}">重做</button>`:""}
+    </div>${ansHtml}</div>`;
+}
+function paintJC(){
+  let list=JC;
+  if(cur.filter==="s")list=list.filter(q=>q.t==="s");
+  if(cur.filter==="m")list=list.filter(q=>q.t==="m");
+  if(cur.filter==="done")list=list.filter(q=>store["q"+q.n]&&store["q"+q.n].s);
+  if(cur.filter==="todo")list=list.filter(q=>!(store["q"+q.n]&&store["q"+q.n].s));
+  if(cur.filter==="wrong")list=list.filter(q=>store["q"+q.n]&&store["q"+q.n].s&&store["q"+q.n].ok===false);
+  if(cur.kw)list=list.filter(q=>(q.stem+q.opts.join("")).includes(cur.kw));
+  const done=JC.filter(q=>store["q"+q.n]&&store["q"+q.n].s).length;
+  const right=JC.filter(q=>store["q"+q.n]&&store["q"+q.n].ok).length;
+  const pct=done?Math.round(right/done*100):0;
+  let html=`<div class="bar">
+    ${["all:全部","s:单选","m:多选","done:已答","todo:未答","wrong:答错"].map(f=>{const[k,n]=f.split(":");return `<button class="chip ${cur.filter===k?"on":""}" data-f="${k}">${n}</button>`}).join("")}
+    <input type="search" id="kw" placeholder="搜索题干/选项关键词…" value="${cur.kw}">
+    <span class="stat">已答 ${done}/95 · 正确 ${right} · 正确率 ${pct}%</span>
+    <button class="chip" data-f="reset">清空记录</button>
+  </div>
+  <div class="progress"><div style="width:${done/JC.length*100}%"></div></div>`;
+  JC25.meta.sections.forEach(sec=>{
+    const sub=list.filter(q=>q.n>=sec.from&&q.n<=sec.to);
+    if(sub.length)html+=`<div class="sec-title">${sec.name}</div>`+sub.map(qCard).join("");
+  });
+  if(!list.length)html+=`<div class="empty">没有符合条件的题目</div>`;
+  document.getElementById("pane-jc").innerHTML=html;
+  const inp=document.getElementById("kw");
+  inp.addEventListener("input",()=>{cur.kw=inp.value.trim();clearTimeout(window._t);window._t=setTimeout(paintJC,250);});
+  inp.removeEventListener("focus",()=>{});
+  inp.addEventListener("focus",function(){/*keep cursor*/});
+}
+function paintSW(key){
+  const data=key==="sw25"?window.SW25:window.SW26;
+  let html=`<div class="sec-title">${data.title}</div>`;
+  if(data.note)html+=`<div class="expbox" style="margin-bottom:12px">${data.note}</div>`;
+  data.cases.forEach(c=>{
+    html+=`<div class="card case"><div class="qhead"><span class="qnum">试题${["一","二","三","四","五","六"][c.n-1]}</span><span class="qtype">${c.score}分</span><div class="qstem"><b>【背景材料】</b></div></div>
+    <div class="bg" style="margin-top:8px">${c.bg}</div>`;
+    c.qs.forEach((qa,i)=>{
+      html+=`<div class="qa"><div class="qq" data-c="${c.n}" data-i="${i}"><span>${qa.q}</span><span class="tri">▶</span></div><div class="aa"><b>参考${key==="sw26"?"解答":"答案"}：</b><br>${qa.a}</div></div>`;
+    });
+    if(c.pts)html+=`<div class="pts"><b>命题考点：</b>${c.pts}</div>`;
+    html+=`</div>`;
+  });
+  document.getElementById("pane-"+key).innerHTML=html;
+  document.querySelectorAll("#pane-"+key+" .qa .qq").forEach(el=>{
+    el.addEventListener("click",()=>el.parentElement.classList.toggle("open"));
+  });
+}
+/* ---------- 事件 ---------- */
+function onClick(e){
+  const t=e.target.closest(".tab,.chip,.opt,[data-act],.qq");
+  if(!t)return;
+  if(t.classList.contains("tab")){
+    cur.tab=t.dataset.t;
+    document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("on",b===t));
+    ["jc","sw25","sw26"].forEach(k=>document.getElementById("pane-"+k).style.display=k===cur.tab?"":"none");
+    if(cur.tab!=="jc"&&!document.getElementById("pane-"+cur.tab).innerHTML)paintSW(cur.tab);
+    return;
+  }
+  if(cur.tab==="jc"){
+    if(t.dataset.f){
+      if(t.dataset.f==="reset"){if(confirm("确定清空全部答题记录吗？")){store={};save();paintJC();}return;}
+      cur.filter=t.dataset.f;paintJC();return;
+    }
+    if(t.dataset.act){
+      const n=+t.dataset.n,q=JC.find(x=>x.n===n),st=store["q"+n]||{};
+      if(t.dataset.act==="show"){st.show=!st.show;store["q"+n]=st;save();paintJC();}
+      if(t.dataset.act==="clear"){delete store["q"+n];save();paintJC();}
+      if(t.dataset.act==="submit"){
+        const sel=[...document.querySelectorAll(`.opt[data-q="${n}"].sel`)].map(o=>String.fromCharCode(65+ +o.dataset.i)).sort().join("");
+        if(!sel)return alert("请先选择选项");
+        st.s=sel;st.ok=sel===q.ans;st.show=true;store["q"+n]=st;save();paintJC();
+      }
+      return;
+    }
+    if(t.classList.contains("opt")){
+      const n=+t.dataset.q,q=JC.find(x=>x.n===n),st=store["q"+n]||{};
+      if(st.show)return;
+      if(q.t==="s"){
+        document.querySelectorAll(`.opt[data-q="${n}"]`).forEach(o=>o.classList.remove("sel"));
+        t.classList.add("sel");
+        const sel=String.fromCharCode(65+ +t.dataset.i);
+        st.s=sel;st.ok=sel===q.ans;st.show=true;store["q"+n]=st;save();
+        document.querySelectorAll(`.opt[data-q="${n}"]`).forEach(o=>{
+          const lab=String.fromCharCode(65+ +o.dataset.i);
+          if(lab===q.ans)o.classList.add("right");
+          else if(lab===sel)o.classList.add("wrong");
+        });
+        const card=document.getElementById("qc"+n);
+        card.querySelector('[data-act="submit"]')?.remove();
+        card.insertAdjacentHTML("beforeend",`<div class="ansbox"><span class="tag">参考答案：${q.ans}</span>（你的选择：${sel}${st.ok?" ✔":" ✘"}）</div><div class="expbox"><b>解析：</b>${q.exp}</div>`);
+        const btnrow=card.querySelector(".btnrow");
+        btnrow.innerHTML=`<button class="btn ghost" data-act="show" data-n="${n}">收起答案与解析</button><button class="btn ghost" data-act="clear" data-n="${n}">重做</button>`;
+        updStat();
+      }else{
+        t.classList.toggle("sel");
+      }
+      return;
+    }
+  }
+}
+function updStat(){
+  const done=JC.filter(q=>store["q"+q.n]&&store["q"+q.n].s).length;
+  const right=JC.filter(q=>store["q"+q.n]&&store["q"+q.n].ok).length;
+  const el=document.querySelector("#pane-jc .stat");
+  if(el)el.textContent=`已答 ${done}/95 · 正确 ${right} · 正确率 ${done?Math.round(right/done*100):0}%`;
+  const pg=document.querySelector("#pane-jc .progress>div");
+  if(pg)pg.style.width=(done/JC.length*100)+"%";
+}
+document.addEventListener("click",onClick);
+paintJC();
+paintSW("sw25");paintSW("sw26");
+document.getElementById("pane-sw25").style.display="none";
+document.getElementById("pane-sw26").style.display="none";
+})();
+</script>
+</body>
+</html>
