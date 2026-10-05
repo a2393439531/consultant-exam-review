@@ -86,6 +86,42 @@ footer{text-align:center;color:#999;font-size:12px;padding:20px 0 30px}
 <script src="data_sw.js"></script>
 <script>
 (function(){
+/* ---- 访问口令门禁（与 consult1/consult2/consult-quiz 同一口令） ---- */
+var AUTH_KEY='consult-review-authenticated-v1';
+var AUTH_HASH='0fe36529e7da10560d1a09915b4b3458f04b74d809c6493df2ddf0039f9b0787';
+var __authed=false;
+try{__authed=sessionStorage.getItem(AUTH_KEY)==='granted';}catch(e){}
+if(!__authed){
+document.body.innerHTML='<div style="max-width:420px;margin:0 auto;padding:72px 20px 40px;text-align:center;font-family:\'Microsoft YaHei\',\'PingFang SC\',system-ui,sans-serif">'
++'<div style="font-size:15px;color:#888;margin-bottom:8px">Private study room</div>'
++'<h1 style="font-size:22px;margin:0 0 10px;color:#24292f">输入访问口令</h1>'
++'<p style="font-size:14px;color:#666;margin:0 0 20px">这是个人真题复习站。验证通过后，才能打开复习内容。</p>'
++'<form id="auth-form">'
++'<input id="auth-input" type="password" placeholder="请输入口令" autocomplete="current-password" autofocus style="width:100%;padding:12px 14px;font-size:16px;border:1px solid #ddd;border-radius:10px;margin-bottom:12px;box-sizing:border-box">'
++'<button type="submit" id="auth-btn" style="width:100%;padding:12px;font-size:16px;border:none;border-radius:10px;background:#1a5fb4;color:#fff;cursor:pointer">进入复习站</button>'
++'<p id="auth-err" style="color:#c62828;font-size:14px;min-height:20px;margin:10px 0 0"></p>'
++'</form>'
++'<p style="font-size:12px;color:#999">会话只保存在当前浏览器标签页，关闭标签页后需要重新验证。</p></div>';
+document.getElementById('auth-form').addEventListener('submit',async function(ev){
+ev.preventDefault();
+var value=document.getElementById('auth-input').value;
+var err=document.getElementById('auth-err');
+var btn=document.getElementById('auth-btn');
+if(!value.trim()||!window.crypto||!crypto.subtle){err.textContent='口令不正确，请重试。';return;}
+btn.disabled=true;btn.textContent='正在验证…';
+try{
+var bytes=new TextEncoder().encode(value);
+var r=await crypto.subtle.digest('SHA-256',bytes);
+var hex=Array.from(new Uint8Array(r),function(b){return b.toString(16).padStart(2,'0');}).join('');
+if(hex!==AUTH_HASH){err.textContent='口令不正确，请重试。';return;}
+try{sessionStorage.setItem(AUTH_KEY,'granted');}catch(e){err.textContent='当前浏览器不允许保存会话，请开启浏览器存储后重试。';return;}
+location.reload();
+}catch(e){err.textContent='暂时无法验证口令，请刷新页面重试。';}
+finally{btn.disabled=false;btn.textContent='进入复习站';}
+});
+return;
+}
+/* ---- 门禁结束 ---- */
 const LS="zxgcs2025_v1";
 let store={};
 try{store=JSON.parse(localStorage.getItem(LS)||"{}")}catch(e){store={}}
